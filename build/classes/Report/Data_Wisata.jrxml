@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1bad9205-d5cc-49f3-aa9c-8404bb8c917f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from wisata]]>
+	</queryString>
+	<field name="kode_wisata" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_wisata" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="96" y="38" width="432" height="20" uuid="d65fa658-7c07-4d5a-ae55-1e5527e8631a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS PARAWISATA KAB. MALUKU TENGGARA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="17" width="66" height="73" uuid="a1b3bd14-2cfa-49ce-a467-7cb0b5910161"/>
+				<imageExpression><![CDATA["D:\\DEWI MULKI\\Kuliah\\aplikasi_pariwisata\\src\\gambar\\1619289822693.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="5" width="555" height="25" forecolor="#D0B48E" backcolor="#99FF99" uuid="d6cdb9b0-45f0-4abe-be2a-e1be75fd67fe"/>
+				<staticText>
+					<reportElement x="0" y="3" width="555" height="20" uuid="c2d35fb1-98ad-42f2-8f54-a0c556f08603"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Laporan Data Wisata]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="8" width="96" height="20" uuid="9d9de5ee-6bd9-4bda-a916-6f8bdd92ca17"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Kode Wisata]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="8" width="138" height="20" uuid="592129b6-018b-4c04-ae9f-849819c14e05"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Wisata]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="8" width="101" height="20" uuid="09ada5d1-6a49-409f-aad1-aece085f24a1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="8" width="220" height="20" uuid="5fe71060-129c-41a7-9c17-631f7c034124"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="33" width="555" height="1" uuid="4169f742-f747-4f42-a9a1-cb95c539adb6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="3" width="555" height="1" uuid="23c3922d-eeb7-4e14-87d8-64596bd45629"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="96" height="20" uuid="011fd072-29ee-4fe3-ac7d-1f70d3f96e85"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kode_wisata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="0" width="138" height="20" uuid="1a43eff6-8e7e-492a-a55a-83e2a8905e4c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_wisata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="0" width="101" height="20" uuid="044ed5c0-85b7-4b60-b2dc-f591327038bd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="200" height="20" uuid="88ee9f92-a177-44b2-bfe3-d1458312645d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="234" y="0" width="19" height="20" uuid="c3a57a45-32e7-40e4-af20-616da9da63ef"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

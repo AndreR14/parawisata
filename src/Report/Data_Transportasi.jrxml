@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5cfdee49-e6cf-45b0-8660-3712f6656589">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     transportasi.`kd_transportasi` AS transportasi_kd_transportasi,
+     transportasi.`jenis_transportasi` AS transportasi_jenis_transportasi,
+     transportasi.`nama_transportasi` AS transportasi_nama_transportasi,
+     transportasi.`harga` AS transportasi_harga
+FROM
+     `transportasi` transportasi]]>
+	</queryString>
+	<field name="transportasi_kd_transportasi" class="java.lang.String"/>
+	<field name="transportasi_jenis_transportasi" class="java.lang.String"/>
+	<field name="transportasi_nama_transportasi" class="java.lang.String"/>
+	<field name="transportasi_harga" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<image>
+				<reportElement x="29" y="11" width="66" height="73" uuid="ca4df653-5bb1-4aee-949d-284874633351"/>
+				<imageExpression><![CDATA["D:\\DEWI MULKI\\Kuliah\\aplikasi_pariwisata\\src\\gambar\\1619289822693.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="95" y="32" width="432" height="20" uuid="f7e57df4-3b41-4db8-ab34-05f168e1b46c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS PARAWISATA KAB. MALUKU TENGGARA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="5" width="555" height="25" forecolor="#D0B48E" backcolor="#99FF99" uuid="0d4abefd-fe76-49b6-990e-d3898afbe40a"/>
+				<staticText>
+					<reportElement x="1" y="2" width="552" height="20" uuid="f0bcd646-35ee-4406-aa56-6e0180c31467"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Laporan Data Transportasi]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="138" height="20" uuid="bdf68905-8c32-4f37-882c-e87b14b91f81"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Kode Transportasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="11" width="138" height="20" uuid="0d394d15-6d46-44e5-a79b-3ca61b24445d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Jenis Transportasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="11" width="138" height="20" uuid="296f621c-bbfc-4758-aa15-7fae103e9722"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Transportasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="11" width="138" height="20" uuid="7de305e5-2fd1-44fd-a102-5172a5f065bc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Harga Sewa]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="4" width="555" height="1" uuid="26e0c7b0-9ac9-42b1-81bb-c0dc2c845204"/>
+			</line>
+			<line>
+				<reportElement x="1" y="36" width="555" height="1" uuid="5e28b1c2-2a38-41bf-95d9-e386ecaded36"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="8e51d480-913e-4dab-a9f8-47dab3877725"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transportasi_kd_transportasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="eecdb76c-87f7-4146-95e1-eedff5055f74"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transportasi_jenis_transportasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="4dd86a66-71a0-49be-812d-cef60a873761"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transportasi_nama_transportasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="0" width="113" height="20" uuid="318306a3-fda1-4fd8-9cef-a020a085b3a9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transportasi_harga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="419" y="1" width="20" height="20" uuid="9263e59f-43aa-43a7-ac0a-deb76c164aab"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="43" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

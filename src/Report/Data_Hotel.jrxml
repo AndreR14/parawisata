@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70b0ce49-399f-4b85-b496-2e0ea4301b8f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select *from hotel]]>
+	</queryString>
+	<field name="kode_hotel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_hotel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat_hotel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="96" y="42" width="432" height="20" uuid="8eaab8c2-e4f5-4aa5-86b8-eea0217db947"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS PARAWISATA KAB. MALUKU TENGGARA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="21" width="66" height="73" uuid="97f5b727-e692-4ddd-8b6a-486c0364afdd"/>
+				<imageExpression><![CDATA["D:\\DEWI MULKI\\Kuliah\\aplikasi_pariwisata\\src\\gambar\\1619289822693.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="3" width="555" height="25" forecolor="#D0B48E" backcolor="#99FF99" uuid="eb78f39d-690d-487f-aa08-20d4298a1ab0"/>
+				<staticText>
+					<reportElement x="0" y="2" width="555" height="20" uuid="40ae6548-5c98-4ced-8150-79181d8fdd72"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Laporan Data Hotel]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="8" width="138" height="20" uuid="5a68f85d-ede8-4785-b3f3-f77c300d2029"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Kode Hotel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="8" width="138" height="20" uuid="6895fcd1-6d72-4a40-830d-444cb162117a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Hotel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="8" width="138" height="20" uuid="eca4180a-f814-4f39-b385-e120d7b3ceb0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="8" width="138" height="20" uuid="09c0b3dc-cdd2-4310-856a-493c5fd9f037"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Alamat Hotel]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="32" width="555" height="1" uuid="9f253716-f7eb-4791-980f-fd4c413401d0"/>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" uuid="237fa253-3d34-4ad6-b249-c5b7ea555434"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="7d897dab-4f17-44e8-b568-229d8c3184f6"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kode_hotel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="10d75d18-72d0-4dbb-bc18-9d1654dbbe74"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_hotel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="fb2c1985-4e41-4097-b0f2-11f19e796f70"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="cabbf9e4-5f43-4522-a65c-486a180a7efd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat_hotel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

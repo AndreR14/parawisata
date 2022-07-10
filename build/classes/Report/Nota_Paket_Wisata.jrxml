@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="595" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e156eb7-1f8b-4ce8-907a-c648960fd2e5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_transaksi" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     isi_akomodasi.`id_pembayaran` AS isi_akomodasi_id_pembayaran,
+     isi_akomodasi.`tgl_checkin` AS isi_akomodasi_tgl_checkin,
+     isi_akomodasi.`tgl_checkout` AS isi_akomodasi_tgl_checkout,
+     isi_akomodasi.`nama_hotel` AS isi_akomodasi_nama_hotel,
+     isi_akomodasi.`harga_hotel` AS isi_akomodasi_harga_hotel,
+     isi_akomodasi.`lama_inap` AS isi_akomodasi_lama_inap,
+     isi_akomodasi.`total_hotel` AS isi_akomodasi_total_hotel,
+     isi_akomodasi.`nama_transportasi` AS isi_akomodasi_nama_transportasi,
+     isi_akomodasi.`harga_transportasi` AS isi_akomodasi_harga_transportasi,
+     isi_akomodasi.`total_transportasi` AS isi_akomodasi_total_transportasi,
+     isi_akomodasi.`lama_hari` AS isi_akomodasi_lama_hari,
+     isi_akomodasi.`total_wisata` AS isi_akomodasi_total_wisata,
+     isi_wisata.`id_pembayaran` AS isi_wisata_id_pembayaran,
+     isi_wisata.`kode_wisata` AS isi_wisata_kode_wisata,
+     isi_wisata.`harga` AS isi_wisata_harga,
+     nota.`id_pembayaran` AS nota_id_pembayaran,
+     nota.`tgl` AS nota_tgl,
+     nota.`id_pengunjung` AS nota_id_pengunjung,
+     nota.`id_pegawai` AS nota_id_pegawai,
+     pengunjung.`nik` AS pengunjung_nik,
+     pengunjung.`nama_pengunjung` AS pengunjung_nama_pengunjung,
+     pengunjung.`jenis_kelamin` AS pengunjung_jenis_kelamin,
+     pengunjung.`no_hp` AS pengunjung_no_hp,
+     pengunjung.`tujuan_wisata` AS pengunjung_tujuan_wisata,
+     pegawai.`id_pegawai` AS pegawai_id_pegawai,
+     pegawai.`nama_pegawai` AS pegawai_nama_pegawai,
+     pegawai.`username` AS pegawai_username,
+     pegawai.`password` AS pegawai_password,
+     pegawai.`no_hp` AS pegawai_no_hp,
+     pegawai.`alamat` AS pegawai_alamat,
+     wisata.`kode_wisata` AS wisata_kode_wisata,
+     wisata.`nama_wisata` AS wisata_nama_wisata,
+     wisata.`harga` AS wisata_harga,
+     wisata.`alamat` AS wisata_alamat,
+     hotel.`kode_hotel` AS hotel_kode_hotel,
+     hotel.`nama_hotel` AS hotel_nama_hotel,
+     hotel.`harga` AS hotel_harga,
+     hotel.`alamat_hotel` AS hotel_alamat_hotel,
+     transportasi.`kd_transportasi` AS transportasi_kd_transportasi,
+     transportasi.`jenis_transportasi` AS transportasi_jenis_transportasi,
+     transportasi.`nama_transportasi` AS transportasi_nama_transportasi,
+     transportasi.`harga` AS transportasi_harga
+FROM
+     `nota` nota INNER JOIN `pegawai` pegawai ON nota.`id_pegawai` = pegawai.`id_pegawai`
+     INNER JOIN `pengunjung` pengunjung ON nota.`id_pengunjung` = pengunjung.`nik`
+     INNER JOIN `isi_wisata` isi_wisata ON nota.`id_pembayaran` = isi_wisata.`id_pembayaran`
+     INNER JOIN `isi_akomodasi` isi_akomodasi ON nota.`id_pembayaran` = isi_akomodasi.`id_pembayaran`
+     INNER JOIN `hotel` hotel ON isi_akomodasi.`nama_hotel` = hotel.`nama_hotel`
+     INNER JOIN `transportasi` transportasi ON isi_akomodasi.`nama_transportasi` = transportasi.`nama_transportasi`
+     INNER JOIN `wisata` wisata ON isi_wisata.`kode_wisata` = wisata.`kode_wisata` where nota.id_pembayaran=$P{id_transaksi}]]>
+	</queryString>
+	<field name="isi_akomodasi_id_pembayaran" class="java.lang.String"/>
+	<field name="isi_akomodasi_tgl_checkin" class="java.sql.Date"/>
+	<field name="isi_akomodasi_tgl_checkout" class="java.sql.Date"/>
+	<field name="isi_akomodasi_nama_hotel" class="java.lang.String"/>
+	<field name="isi_akomodasi_harga_hotel" class="java.lang.Integer"/>
+	<field name="isi_akomodasi_lama_inap" class="java.lang.Integer"/>
+	<field name="isi_akomodasi_total_hotel" class="java.lang.Integer"/>
+	<field name="isi_akomodasi_nama_transportasi" class="java.lang.String"/>
+	<field name="isi_akomodasi_harga_transportasi" class="java.lang.Integer"/>
+	<field name="isi_akomodasi_total_transportasi" class="java.lang.Integer"/>
+	<field name="isi_akomodasi_lama_hari" class="java.lang.Integer"/>
+	<field name="isi_akomodasi_total_wisata" class="java.lang.Integer"/>
+	<field name="isi_wisata_id_pembayaran" class="java.lang.String"/>
+	<field name="isi_wisata_kode_wisata" class="java.lang.String"/>
+	<field name="isi_wisata_harga" class="java.lang.Integer"/>
+	<field name="nota_id_pembayaran" class="java.lang.String"/>
+	<field name="nota_tgl" class="java.sql.Date"/>
+	<field name="nota_id_pengunjung" class="java.lang.String"/>
+	<field name="nota_id_pegawai" class="java.lang.String"/>
+	<field name="pengunjung_nik" class="java.lang.String"/>
+	<field name="pengunjung_nama_pengunjung" class="java.lang.String"/>
+	<field name="pengunjung_jenis_kelamin" class="java.lang.String"/>
+	<field name="pengunjung_no_hp" class="java.lang.String"/>
+	<field name="pengunjung_tujuan_wisata" class="java.lang.String"/>
+	<field name="pegawai_id_pegawai" class="java.lang.String"/>
+	<field name="pegawai_nama_pegawai" class="java.lang.String"/>
+	<field name="pegawai_username" class="java.lang.String"/>
+	<field name="pegawai_password" class="java.lang.String"/>
+	<field name="pegawai_no_hp" class="java.lang.String"/>
+	<field name="pegawai_alamat" class="java.lang.String"/>
+	<field name="wisata_kode_wisata" class="java.lang.String"/>
+	<field name="wisata_nama_wisata" class="java.lang.String"/>
+	<field name="wisata_harga" class="java.lang.Integer"/>
+	<field name="wisata_alamat" class="java.lang.String"/>
+	<field name="hotel_kode_hotel" class="java.lang.String"/>
+	<field name="hotel_nama_hotel" class="java.lang.String"/>
+	<field name="hotel_harga" class="java.lang.Integer"/>
+	<field name="hotel_alamat_hotel" class="java.lang.String"/>
+	<field name="transportasi_kd_transportasi" class="java.lang.String"/>
+	<field name="transportasi_jenis_transportasi" class="java.lang.String"/>
+	<field name="transportasi_nama_transportasi" class="java.lang.String"/>
+	<field name="transportasi_harga" class="java.lang.Integer"/>
+	<variable name="totalsemua" class="java.lang.String">
+		<variableExpression><![CDATA[$F{isi_akomodasi_total_hotel}+$F{isi_akomodasi_lama_hari}+$F{isi_akomodasi_total_wisata}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="3" width="555" height="42" uuid="019d27cb-1fb1-4102-921f-84ee3707aa40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTA PAKET WISATA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="8" width="64" height="20" uuid="e7402520-93a1-4236-8ff9-df4647991109"/>
+				<text><![CDATA[Id Transaksi :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="33" width="90" height="20" uuid="259bdcc8-7ac9-43ca-81af-83d43a43053e"/>
+				<text><![CDATA[Nama Pengunjung :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="8" width="49" height="20" uuid="770524f3-de7f-4296-8e80-bbf8e9a7f14c"/>
+				<text><![CDATA[Tanggal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="33" width="78" height="20" uuid="82f70afd-3c29-4625-8c84-157303d28d40"/>
+				<text><![CDATA[Nama Pegawai :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="106" y="8" width="100" height="20" uuid="1ea22e0d-20e4-454d-b2e4-69daa2abb966"/>
+				<textFieldExpression><![CDATA[$F{nota_id_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="397" y="8" width="100" height="20" uuid="667e8a33-d5e5-4339-8fcb-b362df674089"/>
+				<textFieldExpression><![CDATA[$F{nota_tgl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="33" width="100" height="20" uuid="192c842b-8250-4870-b61d-eabcf2c3ef2d"/>
+				<textFieldExpression><![CDATA[$F{pengunjung_nama_pengunjung}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="33" width="100" height="20" uuid="8b843541-7df8-4de3-a618-4ccef0e7d514"/>
+				<textFieldExpression><![CDATA[$F{pegawai_nama_pegawai}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="10" width="35" height="20" uuid="00416747-6478-496c-8514-ba958e80ee96"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="10" width="222" height="20" uuid="a1b0d512-11ca-4202-822e-49f0f4c6ab14"/>
+				<text><![CDATA[Nama Wisata]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="10" width="100" height="20" uuid="fe2c007a-446c-4931-a293-0a0cb81985b3"/>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="36" width="555" height="1" uuid="92ebabae-36fb-46ca-bb5a-f67720ff6d0c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="3" width="555" height="1" uuid="e44cb556-e07d-4d6c-9211-394ff06995e9"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="4" width="35" height="20" uuid="64e8f85f-1504-4571-9849-83933a78b8f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="4" width="100" height="20" uuid="6b8664a9-7b72-4cd6-b90d-bda59d3060c7"/>
+				<textFieldExpression><![CDATA[$F{isi_wisata_harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="4" width="222" height="20" uuid="1f71d702-4205-4387-9d18-5dc5571e2609"/>
+				<textFieldExpression><![CDATA[$F{wisata_nama_wisata}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="4" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="122" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="3" width="555" height="1" uuid="5c34a034-d71e-4d0f-94df-91215602d89a"/>
+			</line>
+			<staticText>
+				<reportElement x="380" y="11" width="66" height="20" uuid="fc3f6566-d7fc-4d61-81ad-c13d3928637b"/>
+				<text><![CDATA[Total Wisata :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="36" width="54" height="20" uuid="7e6251e9-dd19-4cb0-8bc6-9a0e004cdf24"/>
+				<text><![CDATA[Total Hotel :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="61" width="89" height="20" uuid="a135e130-6bbd-446c-9e0e-7fdb6e9f1314"/>
+				<text><![CDATA[Total Transportasi :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="446" y="11" width="100" height="20" uuid="6ebd3ca6-cf7c-4a94-b410-c38f022f72b0"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_total_wisata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="36" width="100" height="20" uuid="f11b5da7-78f6-4eea-b971-74cbff0a54cd"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_total_hotel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="61" width="100" height="20" uuid="3fb43b4f-0a2c-4018-8dbe-935092c88db1"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_lama_hari}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="11" width="89" height="20" uuid="4525c4d0-da4f-4164-a3f4-109ba5e5e16f"/>
+				<text><![CDATA[Tanggal Berwisata :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="96" y="11" width="58" height="20" uuid="5cfe721d-6b73-40e3-acc8-b4a9caed4574"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_tgl_checkin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="11" width="21" height="20" uuid="30530ab8-b655-4646-be56-4cb73aa9fa39"/>
+				<text><![CDATA[s.d.]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="176" y="11" width="65" height="20" uuid="d824bbd1-67d0-4011-b035-7078e8408806"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_tgl_checkout}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="36" width="64" height="20" uuid="3f35fa48-d45b-45ee-a55e-b87c0bf6a126"/>
+				<text><![CDATA[Nama Hotel :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="64" y="36" width="100" height="20" uuid="e978c546-2519-4767-8584-4a3640ede771"/>
+				<textFieldExpression><![CDATA[$F{hotel_nama_hotel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="166" y="36" width="44" height="20" uuid="a5fd384e-e01f-431d-8b5a-6d91a8c283da"/>
+				<text><![CDATA[Harga :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="201" y="36" width="54" height="20" uuid="cee10a00-dabe-4095-9c7a-50e9e0a8c270"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_harga_hotel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="36" width="54" height="20" uuid="6cd2766a-9b74-4d96-bb16-1ff035d2947b"/>
+				<text><![CDATA[Lama Hari :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="315" y="36" width="23" height="20" uuid="e584d561-c5db-47dc-a0d9-522cbaf7da21"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_lama_inap}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="61" width="93" height="20" uuid="cd308763-59b4-4434-b4c7-1b754467bc4a"/>
+				<text><![CDATA[Nama Transportasi :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="61" width="100" height="20" uuid="183bf426-4548-4b23-8ae4-423e2cf02afb"/>
+				<textFieldExpression><![CDATA[$F{transportasi_nama_transportasi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="61" width="36" height="20" uuid="ed70ec89-ec31-41af-95a3-0de00bff8b33"/>
+				<text><![CDATA[Harga :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="232" y="61" width="50" height="20" uuid="41592881-c2af-4128-bbf6-92e508f8d597"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_harga_transportasi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="283" y="61" width="56" height="20" uuid="de942f2d-4ff1-4901-91b8-54dd85b29d47"/>
+				<text><![CDATA[Lama Hari :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="335" y="61" width="24" height="20" uuid="a46de594-900c-4fca-ac96-46f40947867a"/>
+				<textFieldExpression><![CDATA[$F{isi_akomodasi_total_transportasi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="88" width="555" height="1" uuid="fec7dc46-99b5-4388-9f7d-b0d2e78ef548"/>
+			</line>
+			<staticText>
+				<reportElement x="384" y="90" width="66" height="20" uuid="e4967ee8-9777-43fd-b2b7-b92887eca59e"/>
+				<text><![CDATA[Total Bayar :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="446" y="90" width="100" height="20" uuid="b1171cf2-a8f2-4652-ad25-f493f8dfbb2d"/>
+				<textFieldExpression><![CDATA[$V{totalsemua}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

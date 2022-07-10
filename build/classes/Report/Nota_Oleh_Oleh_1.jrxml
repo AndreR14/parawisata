@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6855fa81-fccb-4d39-b342-03d2d3361166">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpembayaran" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     isi_oleh_oleh.`id_pembayaran` AS isi_oleh_oleh_id_pembayaran,
+     isi_oleh_oleh.`kode_barang` AS isi_oleh_oleh_kode_barang,
+     isi_oleh_oleh.`harga` AS isi_oleh_oleh_harga,
+     isi_oleh_oleh.`qty` AS isi_oleh_oleh_qty,
+     nota_oleh_oleh.`id_pembayaran` AS nota_oleh_oleh_id_pembayaran,
+     nota_oleh_oleh.`tgl` AS nota_oleh_oleh_tgl,
+     nota_oleh_oleh.`id_pengunjung` AS nota_oleh_oleh_id_pengunjung,
+     nota_oleh_oleh.`id_pegawai` AS nota_oleh_oleh_id_pegawai,
+     oleh_oleh.`kode_barang` AS oleh_oleh_kode_barang,
+     oleh_oleh.`nama_barang` AS oleh_oleh_nama_barang,
+     oleh_oleh.`Harga` AS oleh_oleh_Harga,
+     oleh_oleh.`stok` AS oleh_oleh_stok,
+     oleh_oleh.`Alamat` AS oleh_oleh_Alamat,
+     pegawai.`id_pegawai` AS pegawai_id_pegawai,
+     pegawai.`nama_pegawai` AS pegawai_nama_pegawai,
+     pegawai.`username` AS pegawai_username,
+     pegawai.`password` AS pegawai_password,
+     pegawai.`no_hp` AS pegawai_no_hp,
+     pegawai.`alamat` AS pegawai_alamat,
+     pengunjung.`nik` AS pengunjung_nik,
+     pengunjung.`nama_pengunjung` AS pengunjung_nama_pengunjung,
+     pengunjung.`jenis_kelamin` AS pengunjung_jenis_kelamin,
+     pengunjung.`alamat` AS pengunjung_alamat,
+     pengunjung.`no_hp` AS pengunjung_no_hp,
+     pengunjung.`tujuan_wisata` AS pengunjung_tujuan_wisata
+FROM
+     `nota_oleh_oleh` nota_oleh_oleh INNER JOIN `pengunjung` pengunjung ON nota_oleh_oleh.`id_pengunjung` = pengunjung.`nik`
+     INNER JOIN `pegawai` pegawai ON nota_oleh_oleh.`id_pegawai` = pegawai.`id_pegawai`
+     INNER JOIN `isi_oleh_oleh` isi_oleh_oleh ON nota_oleh_oleh.`id_pembayaran` = isi_oleh_oleh.`id_pembayaran`
+     INNER JOIN `oleh_oleh` oleh_oleh ON isi_oleh_oleh.`kode_barang` = oleh_oleh.`kode_barang` where nota_oleh_oleh.id_pembayaran=$P{idpembayaran}]]>
+	</queryString>
+	<field name="isi_oleh_oleh_id_pembayaran" class="java.lang.String"/>
+	<field name="isi_oleh_oleh_kode_barang" class="java.lang.String"/>
+	<field name="isi_oleh_oleh_harga" class="java.lang.Integer"/>
+	<field name="isi_oleh_oleh_qty" class="java.lang.Integer"/>
+	<field name="nota_oleh_oleh_id_pembayaran" class="java.lang.String"/>
+	<field name="nota_oleh_oleh_tgl" class="java.sql.Date"/>
+	<field name="nota_oleh_oleh_id_pengunjung" class="java.lang.String"/>
+	<field name="nota_oleh_oleh_id_pegawai" class="java.lang.String"/>
+	<field name="oleh_oleh_kode_barang" class="java.lang.String"/>
+	<field name="oleh_oleh_nama_barang" class="java.lang.String"/>
+	<field name="oleh_oleh_Harga" class="java.lang.Integer"/>
+	<field name="oleh_oleh_stok" class="java.lang.Integer"/>
+	<field name="oleh_oleh_Alamat" class="java.lang.String"/>
+	<field name="pegawai_id_pegawai" class="java.lang.String"/>
+	<field name="pegawai_nama_pegawai" class="java.lang.String"/>
+	<field name="pegawai_username" class="java.lang.String"/>
+	<field name="pegawai_password" class="java.lang.String"/>
+	<field name="pegawai_no_hp" class="java.lang.String"/>
+	<field name="pegawai_alamat" class="java.lang.String"/>
+	<field name="pengunjung_nik" class="java.lang.String"/>
+	<field name="pengunjung_nama_pengunjung" class="java.lang.String"/>
+	<field name="pengunjung_jenis_kelamin" class="java.lang.String"/>
+	<field name="pengunjung_alamat" class="java.lang.String"/>
+	<field name="pengunjung_no_hp" class="java.lang.String"/>
+	<field name="pengunjung_tujuan_wisata" class="java.lang.String"/>
+	<variable name="subtotal" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{isi_oleh_oleh_qty}*$F{isi_oleh_oleh_harga}]]></variableExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{subtotal}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="35" uuid="f14d37ef-d200-41b5-9876-b428e11e2548"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[NOTA OLEH-OLEH]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="5" width="82" height="20" uuid="2ff0fabd-a8bc-47f3-9fd3-2da23977a59f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Id Pembayaran :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="5" width="100" height="20" uuid="1510344d-ef70-4536-99a6-5e4d01d43dfc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota_oleh_oleh_id_pembayaran}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="34" width="96" height="20" uuid="3a3d29c3-3311-467e-8eca-c5b17b377213"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Pengunjung :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="34" width="100" height="20" uuid="f6d9cff7-9beb-460f-9dee-0cc9bc7e484c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pengunjung_nama_pengunjung}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="371" y="5" width="53" height="20" uuid="75af93c2-2e37-452e-bdec-a5a79dd2217f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Tanggal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="34" width="70" height="20" uuid="dcae3958-d62f-443d-b469-6b7ab1d6549f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Kasir :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="424" y="5" width="100" height="20" uuid="0b85671c-ddae-474b-b8a5-6991e2fbb97b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota_oleh_oleh_tgl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="34" width="100" height="20" uuid="64cc4a19-57b5-4cb2-b7a5-bb20b2215d47"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pegawai_nama_pegawai}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<line>
+				<reportElement x="16" y="4" width="525" height="1" uuid="821c1aba-85a5-4c3e-811c-805078053fee"/>
+			</line>
+			<staticText>
+				<reportElement x="19" y="9" width="30" height="20" uuid="88243826-731c-473c-8f4d-624df53e1738"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="9" width="171" height="20" uuid="f82f453a-f986-4c82-a841-cedbd551edd7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Barang ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="9" width="48" height="20" uuid="9d15d1b9-184a-4198-a6f3-eee1ad8f6ae7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="9" width="100" height="20" uuid="5d2549d8-b464-45c0-9b2d-b569f7fe014b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="9" width="100" height="20" uuid="91ebea0e-40d3-46e6-b754-a470bf5370b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="16" y="35" width="525" height="1" uuid="1da90821-8155-48ef-b5bf-4e391d1026bc"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="73" y="6" width="171" height="20" uuid="11a88440-fdf3-4bbd-ad9a-ef21a81dc317"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{oleh_oleh_nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="6" width="48" height="20" uuid="462a4441-c218-4914-a577-a02feec6aa9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isi_oleh_oleh_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="6" width="100" height="20" uuid="237436a1-885a-4c0b-8162-b0c706bebda8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isi_oleh_oleh_harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="6" width="100" height="20" uuid="24896506-3949-49e8-99cf-6deac6c7a7a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="6" width="30" height="20" uuid="8792b9f1-7f98-41a4-bded-47ee8c746d5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="3" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="365" y="7" width="73" height="20" uuid="1a5e65f8-1e25-4de7-831a-4bc6ec5a5a7d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Belanja :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="438" y="7" width="100" height="20" uuid="4d8c76ba-846c-4ee8-8ac8-2c766ac915f2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="16" y="2" width="525" height="1" uuid="9a86f428-88f7-4a30-95ed-76b987088065"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
