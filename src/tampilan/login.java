@@ -17,20 +17,22 @@ import koneksi.koneksi;
  *
  * @author ASUS
  */
-public class login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
+
     private Connection conn = new koneksi().connect();
 
     /**
      * Creates new form login
      */
-    public login() {
+    public Login() {
         initComponents();
     }
 
-    private void kosong(){
+    private void kosong() {
         tuser.setText("");
-        tpass.setText ("");
+        tpass.setText("");
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -251,40 +253,39 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void creatakunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creatakunMouseClicked
-        new form_pegawai().setVisible(true);
+        new Pegewai().setVisible(true);
         dispose();
     }//GEN-LAST:event_creatakunMouseClicked
- 
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    try{
-        String sql = "SELECT * FROM pegawai WHERE username='"+tuser.getText()+"' AND password='"+tpass.getText()+"'";
-        Statement stat = conn.createStatement();
-        ResultSet hasil = stat.executeQuery(sql);
-        if(hasil.next()){
-            UserID.setUserLogin(hasil.getString("id_pegawai"));
-            UserID.setNamaLogin(hasil.getString("nama_pegawai"));
-            JOptionPane.showMessageDialog(null,"Berhasil Login");
-            
-            this.setVisible(false);
-            new menu_utama().setVisible(true);
+        try {
+            String sql = "SELECT * FROM pegawai WHERE username='" + tuser.getText() + "' AND password='" + tpass.getText() + "'";
+            Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+            if (hasil.next()) {
+                UserID.setUserLogin(hasil.getString("id_pegawai"));
+                UserID.setNamaLogin(hasil.getString("nama_pegawai"));
+                UserID.setRole(hasil.getString("role"));
+                JOptionPane.showMessageDialog(null, "Berhasil Login");
+
+                this.setVisible(false);
+                new MenuUtama().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Username atau Password Salah");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Gagal Login !!!" + e);
         }
-        else{
-            JOptionPane.showMessageDialog(null,"Username atau Password Salah");    
-        }
-    }
-    catch (SQLException e){
-        JOptionPane.showMessageDialog(null,"Gagal Login !!!" +e); 
-    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tuserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tuserFocusGained
-            if (tuser.getText().equals("Masukan Username")) {
+        if (tuser.getText().equals("Masukan Username")) {
             tuser.setText("");
         }
     }//GEN-LAST:event_tuserFocusGained
 
     private void tuserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tuserFocusLost
-         if (tuser.getText().equals("")) {
+        if (tuser.getText().equals("")) {
             tuser.setText("Masukan Username");
         }
     }//GEN-LAST:event_tuserFocusLost
@@ -326,20 +327,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
